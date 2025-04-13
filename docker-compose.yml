@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  # Chamando o MongoDB
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+
+  # Chamando o Backend
+  backend:
+    image: plsantos/backend-service
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      - URL_BANCO_DE_DADOS=mongodb://mongo:27017/tarefas
+    depends_on:
+      - mongo
+
+  # Chamando o frontend
+  frontend:
+    image: plsantos/frontend-service
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

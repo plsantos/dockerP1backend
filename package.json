@@ -1,7 +1,7 @@
 {
   "name": "tarefas_back",
   "version": "1.0.0",
-  "description": "",
+  "description": "Atividade para P1 - TESI-Docker",
   "main": "index.js",
   "scripts": {
     "start": "nodemon main.js",
