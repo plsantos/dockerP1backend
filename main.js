@@ -1,11 +1,11 @@
 const PORTA = 5000;
-const URL_BANCO_DE_DADOS = 'mongodb://localhost/tarefas';
+const URL_BANCO_DE_DADOS = "mongodb://mongo:27017/tarefas";
 
 // Importando bibliotecas
-const express    = require('express');
-const bodyParser = require('body-parser');
-const mongoose   = require('mongoose');
-const cors       = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
 // Criando o servidor web
 const app = express();
@@ -16,16 +16,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Conecto os controllers
-app.use('/tarefas', require('./controllers/tarefa_controller'));
+app.use("/tarefas", require("./controllers/tarefa_controller"));
 
 // Conectando ao banco de dados
-console.log('Conectando ao banco de dados...');
+console.log("Conectando ao banco de dados...");
 mongoose.connect(URL_BANCO_DE_DADOS).then(() => {
-  console.log('Conectado ao banco de dados com sucesso !');
+  console.log("Conectado ao banco de dados com sucesso !");
   // Iniciando o servidor web
-  console.log('Iniciando o servidor web...');
+  console.log("Iniciando o servidor web...");
   app.listen(PORTA, () => {
     console.log(`Servidor rodando em http://localhost:${PORTA}`);
   });
 });
-

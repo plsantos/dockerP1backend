@@ -1,15 +1,15 @@
-version: "3.8"
 
 services:
   # Chamando o MongoDB
   mongo:
-    image: mongo
+    image: mongo:latest
     container_name: mongo
     ports:
       - "27017:27017"
 
   # Chamando o Backend
   backend:
+    build:  .
     image: plsantos/backend-service
     container_name: backend
     ports:
@@ -27,3 +27,4 @@ services:
       - "3000:80"
     depends_on:
       - backend
+
